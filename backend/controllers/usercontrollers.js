@@ -30,7 +30,6 @@ async function verifyUser(req, res) {
 async function verifybyID(req, res) {
     try {
         const {id} = req.params;
-        console.log(id)
         const user = await User.findById(id);
 
         if (!user) {
@@ -73,7 +72,6 @@ async function addUser(req, res) {
 async function deleteUser(req, res) {
     try {
         const { id } = req.params;
-        console.log(id);
 
         // Delete all tasks associated with the user
         const tasksDeletionResult = await Task.deleteMany({ user: id });
@@ -91,7 +89,6 @@ async function deleteUser(req, res) {
             deletedTasksCount: tasksDeletionResult.deletedCount
         });
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: error.message });
     }
 }
