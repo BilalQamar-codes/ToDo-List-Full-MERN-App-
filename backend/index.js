@@ -2,7 +2,7 @@ const express = require("express")
 const bodyparser = require("body-parser")
 const taskroutes= require('./routes/todoroutes')
 const userroutes= require('./routes/userroutes')
-require("./utils/db")
+const connection = require("./utils/db")
 const port = 3005;
 const app = express();
 
@@ -18,6 +18,11 @@ app.get("/api", (req,res)=>{
 app.use("/api",taskroutes);
 app.use("/api", userroutes);
 
-app.listen(port, ()=>{
-    console.log(`server is listening to the port ${port}.`)
-})
+try {
+    app.listen(port, ()=>{
+        console.log(`server is listening to the port ${port}.`);
+    });
+    connection();
+} catch (error) {
+    console.log(error.messege)
+}

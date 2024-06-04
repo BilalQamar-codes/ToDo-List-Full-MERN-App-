@@ -8,7 +8,7 @@ function TodoApp() {
   const [tasks, setTasks] = useState([]);
 
   function handleClick() {
-    if (task.trim() === '') return; // Prevent adding empty tasks
+    if (task.trim() === '') return;
     setTasks([{ text: task, completed: false }, ...tasks]);
     setTask('');
     setUncomplete(uncomplete + 1);

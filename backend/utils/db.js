@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 mongoose.set('strictQuery',true)
 
-mongoose.connect('mongodb://127.0.0.1:27017/tasks-apis',{
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
-});
+mongoose.connect("mongodb://127.0.0.1:27017/tasks-apis");
 
 const db = mongoose.connection;
 db.on('error',(err) =>{
-    console.log('Failed to Connect With DB');
+    console.log(err.messege);
 })
 
 db.once('open',() =>{
